@@ -1,13 +1,15 @@
+const moment = require("moment");
+
 const generateMessage = (from, text) => ({
   from,
   text,
-  createdAt: new Date().getTime(),
+  createdAt: moment().valueOf(),
 });
 
 const generateLocationMessage = (from, latitude, longtitude) => ({
   from,
   url: `https://www.google.com/maps?q=${latitude},${longtitude}`,
-  createdAt: new Date().getTime(),
+  createdAt: moment().valueOf(),
 });
 
 module.exports = { generateMessage, generateLocationMessage };
