@@ -4,14 +4,19 @@
       "ecmaVersion":6
   },
   "env":{
-      "node":true,
-      "mocha":true,
-      "jquery":true,
-      "browser":true,
-      "es6":true
+    "node":true,
+    "mocha":true,
+    "jquery":true,
+    "browser":true,
+    "es6":true
   },
   "rules":{
-      "quotes": ["error", "double", { "avoidEscape": true }],
-      "no-unused-vars":["error",{"vars":"local","args":"none"}]
+    "quotes": ["error", "double", { "avoidEscape": true }],
+    "no-unused-vars":["error",{"vars":"local","args":"none"}]
+  },
+  "globals": {
+    "io": true,
+    "moment": true,
+    "Mustache":true
   }
 }

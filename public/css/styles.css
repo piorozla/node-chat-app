@@ -123,6 +123,8 @@ button:disabled {
 .chat__messages {
   flex-grow: 1;
   overflow-y: auto;
+  list-style-type: none;
+  padding: 10px;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -147,11 +149,6 @@ button:disabled {
   border: none;
   padding: 10px;
   flex-grow: 1;
-}
-
-.chat__messages {
-  list-style-type: none;
-  padding: 10px;
 }
 
 .message {
