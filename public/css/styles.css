@@ -151,6 +151,19 @@ button:disabled {
   flex-grow: 1;
 }
 
+.chat__header {
+  background: #e6eaee;
+  display: flex;
+  padding: 10px;
+  flex-shrink: 0;
+}
+
+.chat__header div{
+  margin: auto;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
 .message {
   padding: 10px;
 }

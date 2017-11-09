@@ -23,7 +23,7 @@ socket.on("connect", () => {
       alert(err);
       window.location.href = "/";
     } else {
-      console.log("no error");
+      $("#room-name").text(params.room);
     }
   });
 });
