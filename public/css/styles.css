@@ -85,7 +85,7 @@ button:disabled {
 
 .chat__sidebar {
   overflow-y: auto;
-  width: 260px;
+  flex: 0 0 260px;
   height: 100vh;
   background: -moz-linear-gradient(125deg, rgba(39,107,130,1) 0%, rgba(49,84,129,1) 100%); /* ff3.6+ */
   background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(49,84,129,1)), color-stop(100%, rgba(39,107,130,1))); /* safari4+,chrome */
@@ -181,15 +181,39 @@ button:disabled {
 .message__title span {
   color: #999;
 }
+#slider{
+  position: absolute;
+  top: 50%;
+  left: 15.5rem;
+  float: right;  
+  padding: 0.2rem 0.75rem 0.3rem 0.75rem;
+  box-shadow: 1px 1px 5px 1px black;
+  width: 3.25rem;
+  background: lightgray;
+  border-radius: 50%;
+  border: 1px solid white;
+  opacity: 0.4;
+  cursor:pointer;
+}
+#slider span{
+  font-size: 2rem;  
+  font-weight: 900;  
+  background-color: #565656;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
+}
 
 @media (max-width: 600px) {
   * {
     font-size: 1rem;
   }
 
-  .chat__sidebar {
+  /* .chat__sidebar {
     display: none;
-  }
+  } */
 
   .chat__footer {
     flex-direction: column;

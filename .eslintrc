@@ -12,7 +12,8 @@
   },
   "rules":{
     "quotes": ["error", "double", { "avoidEscape": true }],
-    "no-unused-vars":["error",{"vars":"local","args":"none"}]
+    "no-unused-vars":["error",{"vars":"local","args":"none"}],
+    "no-use-before-define": ["error", { "functions": false }]
   },
   "globals": {
     "io": true,
