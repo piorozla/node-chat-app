@@ -5,6 +5,7 @@ const socketIO = require("socket.io");
 const { generateMessage, generateLocationMessage } = require("./utils/message");
 const { isRealString } = require("./utils/validation");
 const { Users } = require("./utils/users");
+const { Rooms } = require("./utils/rooms");
 
 const publicPath = path.join(__dirname, "../public");
 const port = process.env.PORT || 3000;
@@ -12,11 +13,15 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 const users = new Users();
+const rooms = new Rooms();
+
+console.log("join room:", rooms.joinRoom(1, "mAster"));
+console.log("leave room:", rooms.leaveRoom(1, "Node"));
+console.log("room list:", rooms.getRoomList());
 
 app.use(express.static(publicPath));
 
 io.on("connect", (socket) => {
-
   socket.on("join", (params, callback) => {
     if (!isRealString(params.name) || !isRealString(params.room)) {
       return callback("Name and room name are required");
