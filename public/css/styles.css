@@ -181,6 +181,11 @@ button:disabled {
 .message__title span {
   color: #999;
 }
+#room-name{
+  color: rgba(39,107,130,1);
+  font-size: 150%;
+  font-weight: 900;
+}
 #slider{
   position: absolute;
   top: 50%;

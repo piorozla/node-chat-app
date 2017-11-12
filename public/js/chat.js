@@ -10,13 +10,12 @@ checkWindowSize(); // checks windows size to see if the sidebar should be open
 
 socket.on("connect", () => {
   const params = $.deparam(window.location.search);
-
-  socket.emit("join", params, (err) => {
-    if (err) {
-      alert(err);
+  socket.emit("join", params, (msg) => {
+    if (msg.error) {
+      alert(msg.error);
       window.location.href = "/";
-    } else {
-      $("#room-name").text(params.room);
+    } else if (msg.roomName) {
+      $("#room-name").text(msg.roomName);
     }
   });
 });

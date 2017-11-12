@@ -15,18 +15,23 @@ const io = socketIO(server);
 const users = new Users();
 const rooms = new Rooms();
 
-console.log("join room:", rooms.joinRoom(1, "mAster"));
-console.log("leave room:", rooms.leaveRoom(1, "Node"));
-console.log("room list:", rooms.getRoomList());
-
 app.use(express.static(publicPath));
 
 io.on("connect", (socket) => {
+  socket.emit("roomList", rooms.getRoomList());
   socket.on("join", (params, callback) => {
     if (!isRealString(params.name) || !isRealString(params.room)) {
-      return callback("Name and room name are required");
+      return callback({
+        error: "Name and room name are required",
+      });
     }
-    const room = params.room.toLowerCase();
+    if (users.getUserByName(params.name)) {
+      return callback({
+        error: "This name is already taken",
+      });
+    }
+    const room = rooms.joinRoom(socket.id, params.room).name;
+    // const room = params.room.toLowerCase();
     socket.join(room);
 
     users.removeUser(socket.id);
@@ -36,7 +41,9 @@ io.on("connect", (socket) => {
     socket.emit("newMessage", generateMessage("Admin", "Welcome to the chat app"));
     socket.broadcast.to(room).emit("newMessage", generateMessage("Admin", `${params.name} has joined`));
 
-    callback();
+    callback({
+      roomName: room,
+    });
   });
 
   socket.on("createMessage", (message, callback) => {
@@ -60,6 +67,7 @@ io.on("connect", (socket) => {
     const user = users.removeUser(socket.id);
 
     if (user) {
+      rooms.leaveRoom(socket.id, user.room);
       io.to(user.room).emit("updateUserList", users.getUserList(user.room));
       io.to(user.room).emit("newMessage", generateMessage("Admin", `${user.name} has left`));
     }

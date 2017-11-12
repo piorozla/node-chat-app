@@ -5,10 +5,6 @@ class Rooms {
         name: "Master",
         users: [],
         permanent: true,
-      }, {
-        name: "Node",
-        users: [1],
-        permanent: false,
       },
     ];
   }
@@ -56,6 +52,9 @@ class Rooms {
   }
   getRoomList() {
     return this.rooms.map(r => r.name);
+  }
+  getRoom(roomName) {
+    return this.rooms.find(r => r.name.toLowerCase() === roomName.toLowerCase());
   }
 }
 

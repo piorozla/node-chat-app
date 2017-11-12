@@ -49,4 +49,8 @@ describe("Rooms", () => {
     const r = rooms.getRoomList();
     expect(r.length).toBe(2);
   });
+  it("should get a room", () => {
+    const r = rooms.getRoom("master");
+    expect(r.name).toBe("Master");
+  });
 });
