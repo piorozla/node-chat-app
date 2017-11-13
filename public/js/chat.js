@@ -4,6 +4,8 @@ let sidebarToggle = "open";
 const sliderButton = $("#slider");
 const sidebar = $(".chat__sidebar");
 const locationButton = $("#send-location");
+const changeRoom = $("#change-room select");
+let currentRoom;
 
 $(window).resize(checkWindowSize);
 checkWindowSize(); // checks windows size to see if the sidebar should be open
@@ -15,7 +17,18 @@ socket.on("connect", () => {
       alert(msg.error);
       window.location.href = "/";
     } else if (msg.roomName) {
-      $("#room-name").text(msg.roomName);
+      currentRoom = msg.roomName;
+      $("#room-name").text(currentRoom);
+      // updateRoomList(msg.roomList);
+    }
+  });
+});
+
+socket.on("updateRoomList", (roomList) => {
+  changeRoom.html(`<option>${currentRoom}</option`);
+  roomList.forEach((room) => {
+    if (room !== currentRoom) {
+      changeRoom.append(`<option>${room}</option`);
     }
   });
 });
@@ -100,6 +113,13 @@ sliderButton.on("click", () => {
 
 sliderButton.hover(() => { sliderButton.css("opacity", "1"); }, () => { sliderButton.css("opacity", "0.4"); });
 
+changeRoom.change(() => {
+  const selected = $("#change-room select option:selected").text();
+  socket.disconnect();
+  const name = $.deparam(window.location.search).name;
+  window.location.href = `/chat.html?name=${name}&room=${selected}`;
+});
+
 function scrollToBottom() {
   const messages = $("#messages");
   const newMessage = messages.children("li:last-child");
@@ -141,4 +161,13 @@ function toggleSidebar(action) {
     });
     sidebarToggle = "open";
   }
+}
+
+function updateRoomList(roomList) {
+  changeRoom.html(`<option>${currentRoom}</option`);
+  roomList.forEach((room) => {
+    if (room !== currentRoom) {
+      changeRoom.append(`<option>${room}</option`);
+    }
+  });
 }

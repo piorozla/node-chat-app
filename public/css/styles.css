@@ -132,7 +132,6 @@ button:disabled {
   background: #e6eaee;
   display: flex;
   padding: 10px;
-  /*height: 60px;*/
   flex-shrink: 0;
 }
 
@@ -154,14 +153,14 @@ button:disabled {
 .chat__header {
   background: #e6eaee;
   display: flex;
+  align-items: center;
   padding: 10px;
   flex-shrink: 0;
 }
 
-.chat__header div{
-  margin: auto;
-  font-weight: bold;
-  font-size: 1.1rem;
+
+#change-room *{
+  border: 0;
 }
 
 .message {
@@ -182,8 +181,9 @@ button:disabled {
   color: #999;
 }
 #room-name{
+  margin-right: auto;
   color: rgba(39,107,130,1);
-  font-size: 150%;
+  font-size: 1.5rem;
   font-weight: 900;
 }
 #slider{

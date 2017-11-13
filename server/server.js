@@ -31,8 +31,7 @@ io.on("connect", (socket) => {
       });
     }
     const room = rooms.joinRoom(socket.id, params.room).name;
-    // const room = params.room.toLowerCase();
-    socket.join(room);
+    socket.join(room);  
 
     users.removeUser(socket.id);
     users.addUser(socket.id, params.name, room);
@@ -44,10 +43,11 @@ io.on("connect", (socket) => {
     callback({
       roomName: room,
     });
+
+    io.emit("updateRoomList", rooms.getRoomList());    
   });
 
   socket.on("createMessage", (message, callback) => {
-
     const user = users.getUser(socket.id);
 
     if (user && isRealString(message.text)) {
