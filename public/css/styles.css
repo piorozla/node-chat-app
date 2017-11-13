@@ -113,19 +113,36 @@ button:disabled {
   margin: 10px;
 }
 
+#slider{
+  position: absolute;
+  top: 50%;
+  left: 15.5rem;
+  float: right;  
+  padding: 0.2rem 0.75rem 0.3rem 0.75rem;
+  box-shadow: 1px 1px 5px 1px black;
+  width: 3.25rem;
+  background: lightgray;
+  border-radius: 50%;
+  border: 1px solid white;
+  opacity: 0.4;
+  cursor:pointer;
+}
+#slider span{
+  font-size: 2rem;  
+  font-weight: 900;  
+  background-color: #565656;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
+}
+
 .chat__main {
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 100%;
-}
-
-.chat__messages {
-  flex-grow: 1;
-  overflow-y: auto;
-  list-style-type: none;
-  padding: 10px;
-  -webkit-overflow-scrolling: touch;
 }
 
 .chat__footer {
@@ -158,9 +175,23 @@ button:disabled {
   flex-shrink: 0;
 }
 
+.chat__header select{
+  border: none;
+}
 
-#change-room *{
-  border: 0;
+#room-name{
+  margin-right: auto;
+  color: rgba(39,107,130,1);
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.chat__messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  list-style-type: none;
+  padding: 10px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .message {
@@ -179,36 +210,6 @@ button:disabled {
 
 .message__title span {
   color: #999;
-}
-#room-name{
-  margin-right: auto;
-  color: rgba(39,107,130,1);
-  font-size: 1.5rem;
-  font-weight: 900;
-}
-#slider{
-  position: absolute;
-  top: 50%;
-  left: 15.5rem;
-  float: right;  
-  padding: 0.2rem 0.75rem 0.3rem 0.75rem;
-  box-shadow: 1px 1px 5px 1px black;
-  width: 3.25rem;
-  background: lightgray;
-  border-radius: 50%;
-  border: 1px solid white;
-  opacity: 0.4;
-  cursor:pointer;
-}
-#slider span{
-  font-size: 2rem;  
-  font-weight: 900;  
-  background-color: #565656;
-  color: transparent;
-  text-shadow: 0px 2px 3px rgba(255,255,255,0.5);
-  -webkit-background-clip: text;
-     -moz-background-clip: text;
-          background-clip: text;
 }
 
 @media (max-width: 600px) {
