@@ -175,9 +175,10 @@ button:disabled {
   flex-shrink: 0;
 }
 
-.chat__header select{
+/* .chat__header select{
   border: none;
-}
+  color: dimgray;
+} */
 
 #room-name{
   margin-right: auto;
@@ -210,6 +211,60 @@ button:disabled {
 
 .message__title span {
   color: #999;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: lightgray;
+  background-image: none;
+}
+/* Custom Select */
+.select {
+  position: relative;
+  display: block;
+  width: 10rem;;
+  height: 2em;
+  line-height: 2;
+  background: lightgray;
+  overflow: hidden;
+  border-radius: .25rem;
+}
+select {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 0 0 .5em;
+  color: gray;
+  cursor: pointer;
+}
+select::-ms-expand {
+  display: none;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 0.5rem;
+  background: rgb(160, 160, 160);
+  pointer-events: none;
+}
+/* Transition */
+.select:hover::after {
+  color: black;
+}
+.select::after {
+  color: dimgrey;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
 }
 
 @media (max-width: 600px) {

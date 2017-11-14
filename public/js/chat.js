@@ -19,7 +19,6 @@ socket.on("connect", () => {
     } else if (msg.roomName) {
       currentRoom = msg.roomName;
       $("#room-name").text(currentRoom);
-      // updateRoomList(msg.roomList);
     }
   });
 });
@@ -161,13 +160,4 @@ function toggleSidebar(action) {
     });
     sidebarToggle = "open";
   }
-}
-
-function updateRoomList(roomList) {
-  changeRoom.html(`<option>${currentRoom}</option`);
-  roomList.forEach((room) => {
-    if (room !== currentRoom) {
-      changeRoom.append(`<option>${room}</option`);
-    }
-  });
 }
